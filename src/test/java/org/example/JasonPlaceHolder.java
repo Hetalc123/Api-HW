@@ -38,7 +38,7 @@ public class JasonPlaceHolder {
     @Test
     public void verify_lng_ang_lat(){
         Response response = given()
-                .baseUri("https://jsonplaceholder.typicode.com/todos/users/2")
+                .baseUri("https://jsonplaceholder.typicode.com/users/2")
                 .when()
                 .get()
                 .then()
@@ -46,7 +46,8 @@ public class JasonPlaceHolder {
         response.prettyPrint();
         Assert.assertEquals(response.getStatusCode(),200);
         JsonPath jsonPath = response.getBody().jsonPath();
-        Assert.assertEquals(jsonPath.getDouble("address.geo.lat"),"quis ut nam facilis et officia qui");
+        Assert.assertEquals(jsonPath.getDouble("address.geo.lat"),-43.9509);
+        Assert.assertEquals(jsonPath.getDouble("address.geo.lng"),-34.4618);
 
     }
 }
